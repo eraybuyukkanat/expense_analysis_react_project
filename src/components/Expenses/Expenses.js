@@ -1,8 +1,19 @@
+import { useState } from 'react';
 import ExpenseItem from '../Expenses/ExpenseItem'
 import '../Expenses/Expenses.css';
 import Card from "../UI/Card";
+import ExpensesFilter from './ExpenseFilter';
 function Expenses(props){
+  const [dropdownData,setDropdownData] = useState("");
+
+    const getdropdownDataFunc = function(data){
+      setDropdownData(data);
+      console.log(dropdownData);
+    }
+
     return <Card className="expenses">
+     
+        <ExpensesFilter selected={dropdownData} onChangeFilter={getdropdownDataFunc} />
         <ExpenseItem
         date={props.expenses[0].expenseDate}
         title={props.expenses[0].expenseTitle}
