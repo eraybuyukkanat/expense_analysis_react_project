@@ -14,22 +14,7 @@ function Expenses(props){
     return <Card className="expenses">
      
         <ExpensesFilter selected={dropdownData} onChangeFilter={getdropdownDataFunc} />
-        <ExpenseItem
-        date={props.expenses[0].expenseDate}
-        title={props.expenses[0].expenseTitle}
-        amount={props.expenses[0].expenseAmount}
-      />
-      <ExpenseItem
-        date={props.expenses[1].expenseDate}
-        title={props.expenses[1].expenseTitle}
-        amount={props.expenses[1].expenseAmount}
-      />
-      <ExpenseItem
-        date={props.expenses[2].expenseDate}
-        title={props.expenses[2].expenseTitle}
-        amount={props.expenses[2].expenseAmount}
-     />
-    
+        {props.expenses.map((expense) => (<ExpenseItem title={expense.title} amount={expense.amount} date={expense.date} />))}
     </Card>
 }
 
