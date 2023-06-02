@@ -39,6 +39,7 @@ function ExpenseForm(props){
         };
         props.onSaveExpense(expenseData);
         setUserInput({enteredAmount: "",enteredDate: "",enteredTitle: ""});
+        props.onClickButton();
     }
 
     return <form onSubmit={submitHandler}>
