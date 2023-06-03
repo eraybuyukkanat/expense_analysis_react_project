@@ -1,8 +1,8 @@
 import { useState } from "react";
-import ExpenseItem from "../Expenses/ExpenseItem";
 import "../Expenses/Expenses.css";
 import Card from "../UI/Card";
 import ExpensesFilter from "./ExpenseFilter";
+import ExpensesList from "./ExpensesList";
 function Expenses(props) {
   const [dropdownData, setDropdownData] = useState("");
   const filteredExpenses = props.expenses.filter((expense) => {
@@ -13,24 +13,15 @@ function Expenses(props) {
     console.log(dropdownData);
   };
 
+ 
+
   return (
     <Card className="expenses">
       <ExpensesFilter
         selected={dropdownData}
         onChangeFilter={getdropdownDataFunc}
       />
-      {filteredExpenses.length === 0 ? (
-        <p>No Expenses found.</p>
-      ) : (
-        filteredExpenses.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))
-      )}
+      <ExpensesList expenses={filteredExpenses} />
     </Card>
   );
 }
